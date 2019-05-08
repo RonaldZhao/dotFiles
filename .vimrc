@@ -12,7 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 
-Plugin 'morhetz/gruvbox'
+" themes
+"Plugin 'morhetz/gruvbox'
+Plugin 'joshdick/onedark.vim'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -75,4 +77,13 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 set background=dark
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme onedark
+
+" set vim-airline theme
+let g:airline_theme='onedark'
+
+" onedark theme settings
+let g:onedark_hide_endofbuffer = 1
+let g:onedark_terminal_italics = 1
+
