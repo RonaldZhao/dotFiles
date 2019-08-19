@@ -1,92 +1,112 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" file paht: ~/.config/nvim/init.vim
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-"
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plugin 'scrooloose/nerdtree'
+" tagbar need ctags : brew install ctags
+Plug 'majutsushi/tagbar'
 
-" themes
-"Plugin 'morhetz/gruvbox'
-Plugin 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+call plug#end()
 
-" golang plugin
-Plugin 'fatih/vim-go'
+" --------------------------------------------------------------------------------------------
+" nerdtree config start
+" --------------------------------------------------------------------------------------------
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" open NERDTree automatically when neovim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Ctrl+n -> NERDTreeToggle
+map <C-n> :NERDTreeToggle<CR>
 
-" show line number
-set number
-set relativenumber
+" close neovim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-set ruler
+" --------------------------------------------------------------------------------------------
+" nerdtree config end
+" --------------------------------------------------------------------------------------------
 
-set cursorline
+" --------------------------------------------------------------------------------------------
+" coc.nvim settings start
+" --------------------------------------------------------------------------------------------
 
-set textwidth=79
+" if hidden is not set, TextEdit might fail.
+set hidden
 
-set wrap
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" --------------------------------------------------------------------------------------------
+" coc.nvim settings end
+" --------------------------------------------------------------------------------------------
+
+" --------------------------------------------------------------------------------------------
+" tagbar settings start
+" --------------------------------------------------------------------------------------------
+
+nmap <F8> :TagbarToggle<CR>
+
+" --------------------------------------------------------------------------------------------
+" tagbar settings end
+" --------------------------------------------------------------------------------------------
+
+" --------------------------------------------------------------------------------------------
+"  custom settings start
+" --------------------------------------------------------------------------------------------
 
 " syntax highlighting
 syntax on
+
+" color theme
+color dracula
+
+" show line number
+set number
 
 set encoding=utf-8
 
 set autoindent
 set smartindent
 
+set cursorline
+set cursorcolumn
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
 
-set showmatch
-
-set hlsearch
-
+" search ignore case
 set ignorecase
 
-" Auto open NERDTree
-" autocmd vimenter * NERDTree
+" cancel line break
+set nowrap
 
-" Toggle NERDTree with Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
+set ruler
 
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" 当光标所在行到底部还剩7行时开始滚动
+set so=7
 
-set background=dark
-"colorscheme gruvbox
-colorscheme onedark
-
-" set vim-airline theme
-let g:airline_theme='onedark'
-
-" onedark theme settings
-let g:onedark_hide_endofbuffer = 1
-let g:onedark_terminal_italics = 1
-
+" --------------------------------------------------------------------------------------------
+"  custom settings end
+" --------------------------------------------------------------------------------------------
