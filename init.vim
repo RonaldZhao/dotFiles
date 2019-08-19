@@ -10,6 +10,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " tagbar need ctags : brew install ctags
 Plug 'majutsushi/tagbar'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 " --------------------------------------------------------------------------------------------
@@ -29,25 +32,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " --------------------------------------------------------------------------------------------
 " nerdtree config end
 " --------------------------------------------------------------------------------------------
-
-" show line number
-set number
-
-set encoding=utf-8
-
-set autoindent
-set smartindent
-
-set cursorline
-set cursorcolumn
-
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set softtabstop=4
-
-" search ignore case
-set ignorecase
 
 " --------------------------------------------------------------------------------------------
 " coc.nvim settings start
@@ -95,6 +79,33 @@ syntax on
 
 " color theme
 color dracula
+
+" show line number
+set number
+
+set encoding=utf-8
+
+set autoindent
+set smartindent
+
+set cursorline
+set cursorcolumn
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+
+" search ignore case
+set ignorecase
+
+" cancel line break
+set nowrap
+
+set ruler
+
+" 当光标所在行到底部还剩7行时开始滚动
+set so=7
 
 " --------------------------------------------------------------------------------------------
 "  custom settings end
