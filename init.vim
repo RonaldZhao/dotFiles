@@ -2,7 +2,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" 安装完coc.nvim后打开neovim安装coc-json -> :CocInstall coc-json
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
