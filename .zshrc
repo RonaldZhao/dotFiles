@@ -9,7 +9,8 @@ export ZSH="/Users/ronaldzhao/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="ys"
+#ZSH_THEME="ys"
+ZSH_THEME="dracula"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -101,13 +102,15 @@ source $ZSH/oh-my-zsh.sh
 alias rly="~/.ssh/login_inner"
 alias c="clear"
 alias startredis="redis-server /usr/local/redis-5.0.5/etc/redis.conf"
+alias nv="nvim"
 
 # pyenv 安装python的方法
 # SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk MACOSX_DEPLOYMENT_TARGET=10.14 pyenv install x.x.x
 
 export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
 
-export PATH="$HOME/.pyenv/bin:$GOPATH/bin:$PATH:/usr/local/mysql/bin:/Users/ronaldzhao/Library/Python/2.7/bin"
+export PATH="$HOME/.pyenv/bin:$GOBIN:$PATH:/usr/local/mysql/bin:/Users/ronaldzhao/Library/Python/2.7/bin"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
