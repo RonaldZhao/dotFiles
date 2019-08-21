@@ -110,7 +110,7 @@ alias nv="nvim"
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
-export PATH="$HOME/.pyenv/bin:$GOBIN:$PATH:/usr/local/mysql/bin:/Users/ronaldzhao/Library/Python/2.7/bin"
+export PATH="$HOME/.pyenv/bin:$GOBIN:$PATH:/usr/local/mysql/bin:/Users/ronaldzhao/Library/Python/2.7/bin:/Users/ronaldzhao/Library/Python/3.7/bin"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
