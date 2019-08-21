@@ -80,9 +80,9 @@ endfunction
 " Use <c-space> to trigger completion.
 " inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[c` and `]c` to navigate diagnostics
-" nmap <silent> [c <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Use `[e` and `]e` to navigate diagnostics
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -211,8 +211,8 @@ set nowrap
 
 set ruler
 
-" 当光标所在行到底部还剩7行时开始滚动
-set so=7
+" 当光标所在行到底部还剩20行时开始滚动
+set so=20
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
