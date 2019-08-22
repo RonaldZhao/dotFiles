@@ -20,6 +20,7 @@ Plug 'junegunn/gv.vim'
 " fzf installed using Homebrew
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
