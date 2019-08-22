@@ -12,5 +12,7 @@
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "/Users/ronaldzhao/Library/Python/3.7/bin/flake8",
   "python.formatting.provider": "black",
-  "python.formatting.blackPath": "/Users/ronaldzhao/Library/Python/3.7/bin/black"
+  "python.formatting.blackPath": "/Users/ronaldzhao/Library/Python/3.7/bin/black",
+  "diagnostic.errorSign": "✗✗",
+  "diagnostic.warningSign": "⚡️"
 }
