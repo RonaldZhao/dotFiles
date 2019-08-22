@@ -1,2 +1,2 @@
-# VimConfig
-my personal vim config file.
+# Config files
+my personal neovim & coc.nvim config file.
