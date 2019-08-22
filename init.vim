@@ -7,6 +7,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " tagbar need ctags : brew install ctags
 Plug 'majutsushi/tagbar'
@@ -14,7 +15,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 " fzf installed using Homebrew
@@ -175,6 +175,23 @@ nmap <F8> :TagbarToggle<CR>
 
 " --------------------------------------------------------------------------------------------
 " tagbar settings end
+" --------------------------------------------------------------------------------------------
+
+" --------------------------------------------------------------------------------------------
+"  NERD Commenter settings start
+" --------------------------------------------------------------------------------------------
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+" --------------------------------------------------------------------------------------------
+"  NERD Commenter settings end
 " --------------------------------------------------------------------------------------------
 
 " --------------------------------------------------------------------------------------------
