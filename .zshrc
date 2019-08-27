@@ -103,6 +103,7 @@ alias rly="~/.ssh/login_inner"
 alias c="clear"
 alias startredis="redis-server /usr/local/redis-5.0.5/etc/redis.conf"
 alias nv="nvim"
+alias dateto='date -j -f "%Y-%m-%d %H:%M:%S"' # date -j -f "%Y-%m-%d %H:%M:%S" "2019-08-01 19:00:00" +%s 生成指定时间的时间戳
 
 # pyenv 安装python的方法
 # SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk MACOSX_DEPLOYMENT_TARGET=10.14 pyenv install x.x.x
