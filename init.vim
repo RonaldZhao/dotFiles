@@ -223,6 +223,17 @@ nnoremap <silent> <Leader><Leader> :Files<CR>
 " --------------------------------------------------------------------------------------------
 
 " --------------------------------------------------------------------------------------------
+"  vim-go settings start
+" --------------------------------------------------------------------------------------------
+
+" 告诉vim-go保存文件时自动执行goimports
+let g:go_fmt_command = "goimports"
+
+" --------------------------------------------------------------------------------------------
+"  vim-go settings end
+" --------------------------------------------------------------------------------------------
+
+" --------------------------------------------------------------------------------------------
 "  custom settings start
 " --------------------------------------------------------------------------------------------
 
@@ -263,9 +274,10 @@ set so=20
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 
+" gopls settings
 " The editor.action.organizeImport code action will auto-format code and add missing imports.
 " To run this automatically on save, add the following line to your init.vim:
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " --------------------------------------------------------------------------------------------
 "  custom settings end
