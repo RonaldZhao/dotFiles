@@ -193,8 +193,8 @@ let g:python3_host_prog  = '/Users/ronaldzhao/.pyenv/shims/python3'  " 且需要
 
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" 使用 UltiSnipsEditSplit 的时候以垂直分屏的方式编辑当前文件格式的代码片段配置文件
+let g:UltiSnipsEditSplit="vertical"
 
 " --------------------------------------------------------------------------------------------
 "  UltiSnips settings end
@@ -246,6 +246,9 @@ let g:go_def_mapping_enabled = 0
 
 " 将<Leader>键设置为","(默认为"\")
 let mapleader = ","
+
+" 设置代码折叠
+set fdm=indent
 
 " --------------------------------------------------------------------------------------------
 "  custom settings end
