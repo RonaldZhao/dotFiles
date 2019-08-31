@@ -24,6 +24,9 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
+" code snips
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -179,6 +182,22 @@ let g:go_addtags_transform = "camelcase"
 
 " --------------------------------------------------------------------------------------------
 "  vim-go settings end
+" --------------------------------------------------------------------------------------------
+
+" --------------------------------------------------------------------------------------------
+"  UltiSnips settings start
+" --------------------------------------------------------------------------------------------
+
+let g:python_host_prog  = '/Users/ronaldzhao/.pyenv/shims/python'    " 且需要 pip2 install --user --upgrade neovim
+let g:python3_host_prog  = '/Users/ronaldzhao/.pyenv/shims/python3'  " 且需要 pip3 install --user --upgrade neovim
+
+" Trigger configuration. Do not use <tab> if you use YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" --------------------------------------------------------------------------------------------
+"  UltiSnips settings end
 " --------------------------------------------------------------------------------------------
 
 " --------------------------------------------------------------------------------------------
