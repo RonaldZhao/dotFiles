@@ -25,7 +25,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 " code snippets
 Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
 
 call plug#end()
 
