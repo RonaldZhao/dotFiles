@@ -195,7 +195,9 @@ let g:UltiSnipsUsePythonVersion = 3
 " 使用<Ctrl-l>列出可用的代码片段
 let g:UltiSnipsListSnippets="<c-l>"
 " 设置UltiSnips自定义配置文件的路径
-let g:UltiSnipsSnippetsDir="~/.config/UltiSnips"
+let g:UltiSnipsSnippetsDir=$HOME."/.config/UltiSnips"
+" 设置UltiSnips的配置文件搜索路径
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/.config/UltiSnips"]
 " 使用 UltiSnipsEditSplit 的时候以垂直分屏的方式编辑当前文件格式的代码片段配置文件
 let g:UltiSnipsEditSplit="vertical"
 " Disable looking for SnipMate snippets in runtimepath.
