@@ -3,8 +3,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'AndrewRadev/splitjoin.vim'
-" 安装完coc.nvim后打开neovim安装coc-json -> :CocInstall coc-json
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -29,7 +27,7 @@ Plug 'SirVer/ultisnips'
 call plug#end()
 
 " --------------------------------------------------------------------------------------------
-" nerdtree config start
+" NERDTree config start
 " --------------------------------------------------------------------------------------------
 
 " open NERDTree automatically when neovim starts up on opening a directory
@@ -43,72 +41,7 @@ map <F2> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " --------------------------------------------------------------------------------------------
-" nerdtree config end
-" --------------------------------------------------------------------------------------------
-
-" --------------------------------------------------------------------------------------------
-" coc.nvim settings start
-" --------------------------------------------------------------------------------------------
-
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=100
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Use `[e` and `]e` to navigate diagnostics
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" --------------------------------------------------------------------------------------------
-" coc.nvim settings end
+" NERDTree config end
 " --------------------------------------------------------------------------------------------
 
 " --------------------------------------------------------------------------------------------
@@ -168,7 +101,7 @@ nnoremap <silent> <Leader><Leader> :Files<CR>
 "  vim-go settings start
 " --------------------------------------------------------------------------------------------
 
-" 告诉vim-go保存文件时自动执行goimports
+" Use this option to define which tool is used to gofmt. By default `gofmt` is used.
 let g:go_fmt_command = "goimports"
 
 set autowrite
@@ -245,10 +178,6 @@ set ruler
 
 " 当光标所在行到底部还剩20行时开始滚动
 set so=20
-
-" disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
 
 " 将<Leader>键设置为","(默认为"\")
 let mapleader = ","
