@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'AndrewRadev/splitjoin.vim'
-
 " 安装完coc.nvim后打开neovim安装coc-json -> :CocInstall coc-json
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -24,9 +23,9 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
-" code snips
+" code snippets
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -190,11 +189,17 @@ let g:go_addtags_transform = "camelcase"
 
 let g:python_host_prog  = '/Users/ronaldzhao/.pyenv/shims/python'    " 且需要 pip2 install --user --upgrade neovim
 let g:python3_host_prog  = '/Users/ronaldzhao/.pyenv/shims/python3'  " 且需要 pip3 install --user --upgrade neovim
+" let UltiSnips uses python3
+let g:UltiSnipsUsePythonVersion = 3
 
-" Trigger configuration. Do not use <tab> if you use YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+" 使用<Ctrl-l>列出可用的代码片段
+let g:UltiSnipsListSnippets="<c-l>"
+" 设置UltiSnips自定义配置文件的路径
+let g:UltiSnipsSnippetsDir="/Users/ronaldzhao/.config/nvim/UltiSnips"
 " 使用 UltiSnipsEditSplit 的时候以垂直分屏的方式编辑当前文件格式的代码片段配置文件
 let g:UltiSnipsEditSplit="vertical"
+" Disable looking for SnipMate snippets in runtimepath.
+let g:UltiSnipsEnableSnipMate=0
 
 " --------------------------------------------------------------------------------------------
 "  UltiSnips settings end
