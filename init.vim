@@ -70,6 +70,11 @@ set fdm=indent
 set foldlevel=99
 " 自动补全完成后自动关闭预览窗口
 autocmd CompleteDone * pclose
+" 调整窗口大小
+nmap    ,v  :vertical resize -3<CR>
+nmap    ,V  :vertical resize +3<CR>
+nmap    ,h  :resize -3<CR>
+nmap    ,H  :resize +3<CR>
 
 " --------------------------------------------------------------------------------------------
 "  VIM Settings END
