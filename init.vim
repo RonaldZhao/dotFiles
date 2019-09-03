@@ -1,16 +1,6 @@
 " file paht: ~/.config/nvim/init.vim
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" deoplete START
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-" deoplete END
 Plug 'dense-analysis/ale'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -99,9 +89,10 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_enter = 0
 " show errors or warnings in airline.
 " let g:airline#extensions#ale#enabled = 1
+" let g:ale_completion_enabled = 1
 " [e上一个错误，]e下一个错误
-nmap [e <Plug>(ale_previous_wrap)
-nmap ]e <Plug>(ale_next_wrap)
+autocmd FileType go nmap [e <Plug>(ale_previous_wrap)
+autocmd FileType go nmap ]e <Plug>(ale_next_wrap)
 
 " --------------------------------------------------------------------------------------------
 "  ALE Settings END
@@ -195,8 +186,6 @@ autocmd FileType go nmap <leader>f  <Plug>(go-referrers)
 let g:go_addtags_transform = "camelcase"
 " 高亮函数名
 let g:go_highlight_functions = 1
-" 对于deoplete自动补全的配置
-call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
 " --------------------------------------------------------------------------------------------
 "  vim-go Settings END
