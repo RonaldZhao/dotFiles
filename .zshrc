@@ -71,10 +71,10 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+# brew install autojump
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,5 +119,9 @@ export PATH="$HOME/.pyenv/bin:$GOBIN:$PATH:/usr/local/mysql/bin:/Users/ronaldzha
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# autojump settings start
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+# autojump settings end
 
 neofetch
