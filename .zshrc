@@ -115,10 +115,7 @@ alias dateto='date -j -f "%Y-%m-%d %H:%M:%S"' # date -j -f "%Y-%m-%d %H:%M:%S" "
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
-export PATH="$HOME/.pyenv/bin:$GOBIN:$PATH:/usr/local/mysql/bin:/Users/ronaldzhao/Library/Python/2.7/bin:/Users/ronaldzhao/Library/Python/3.7/bin"
-
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PATH="$GOBIN:$PATH:/usr/local/mysql/bin:/Users/ronaldzhao/Library/Python/2.7/bin:/Users/ronaldzhao/Library/Python/3.7/bin"
 
 # autojump settings start
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
