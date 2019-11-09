@@ -82,3 +82,41 @@
 
 [[layers]]
     name = "ui"
+
+[[layers]]
+    name = "lang#python"
+    format_on_save = 1
+    # 需要安装以下模块，并将安装路径添加到系统PATH环境变量
+    # pip install --user flake8
+    # pip install --user yapf
+    # pip install --user autoflake
+    # pip install --user isort
+    # pip install --user coverage
+
+[[layers]]
+    name = "lang#markdown"
+    # 需要安装以下模块(Mac或Linux)
+    # npm -g install remark
+    # npm -g install remark-cli
+    # npm -g install remark-stringify
+    # npm -g install remark-frontmatter
+    # npm -g install wcwidth
+
+[[layers]]
+    name = "lang#c"
+
+    # 设置是否启用基于 clang 的语法高亮。默认并未开启，开启该功能需要 vim8 或者 neovim。
+    # enable_clang_syntax_highlight = true
+
+    # 设置可执行程序 clang 的路径。
+    # clang_executable = "/usr/bin/clang"
+
+    # 该字典存储编辑不同 C 家族文件类型时所使用的标准库。默认值为：
+    # [layer.clang_std]
+    #     c = "c11"
+    #     cpp = "c++1z"
+    #     objc = "c11"
+    #     objcpp = "c++1z"
+
+    # 通常，在项目根目录新建一个 .clang 文件，可以将编译参数逐行写入。也可以使用一 List 值来初始化该选项。
+    # 例如：clang_flag = ["-Iwhatever"]
