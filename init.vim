@@ -1,216 +1,149 @@
-" file paht: ~/.config/nvim/init.vim
-call plug#begin('~/.vim/plugged')
+" --------------------------------- neovim配置文件 ---------------------------------
+"
+" RonaldZhao个人使用的配置，主要适配Go语言。
+"
+" 此文件的存放路径: ~/.config/nvim/init.vim
+
+" 指定一个插件安装的目录
+" - 避免使用如'plugin'的标准Vim目录
+call plug#begin('~/.nvim/plugins')
+" 确保非注释使用单引号
+
+" 一个简单易用的Vim对齐插件
+Plug 'junegunn/vim-easy-align'
+
+" Multiple Plug commands can be written in a single line using | separators
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" 针对Go语言开发的插件
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'dense-analysis/ale'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'morhetz/gruvbox'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" tagbar need ctags : brew install ctags
-Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/gv.vim'
-" fzf installed using Homebrew
+
+" 一个搜索插件，需要先brew install fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'mhinz/vim-startify'
-" code snippets
-Plug 'SirVer/ultisnips'
+
+" 文件管理器
+Plug 'scrooloose/nerdtree'
+" nerdtree中显示git状态的插件
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" 文件图标插件
+Plug 'ryanoasis/vim-devicons'
+
+" 异步代码补全插件，需要pynvim(pip3 install --user --upgrade pynvim)
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" 异步Go语言代码补全插件，需要deoplete.nvim插件和gocode工具
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
 call plug#end()
 
-" --------------------------------------------------------------------------------------------
-"  VIM Settings START
-" --------------------------------------------------------------------------------------------
+" 默认的<Leader>键为"\",这里设置为";"
+let mapleader = ";"
 
-" syntax highlighting
+" 开启语法高亮
 syntax on
-" color theme
-" colorscheme dracula
-colorscheme gruvbox
-set background=dark
-" show line number
+
+" 显示行号
 set number
-set encoding=utf-8
+
+" 设置编码格式为utf-8
+set encoding=UTF-8
+
+" 自动缩进
 set autoindent
+
+" 智能缩进
 set smartindent
+
+" 高亮当前行
 set cursorline
+
+" 高亮当前列
 set cursorcolumn
+
+" 设置读取到'\t'(即tab)的时候，解析为为4个空格
 set tabstop=4
+
+" 设置tab为4个空格宽
 set shiftwidth=4
+
+" 将tab转为对应宽度个数的空格
 set expandtab
+
+" 退格操作时将4个空格当作一个tab删除
 set softtabstop=4
-" search ignore case
+
+" 搜索时忽略大小写
 set ignorecase
+
 " cancel line break
 set nowrap
+
 " 当光标所在行到底部还剩20行时开始滚动
 set so=20
-" 将<Leader>键设置为","(默认为"\")
-let mapleader = ","
+
 " 设置代码折叠
 set fdm=indent
+
 " 设置自动折叠的行数限制
 set foldlevel=99
-" 自动补全完成后自动关闭预览窗口
-autocmd CompleteDone * pclose
-" 调整窗口大小
-nmap    ,v  :vertical resize -3<CR>
-nmap    ,V  :vertical resize +3<CR>
-nmap    ,h  :resize -3<CR>
-nmap    ,H  :resize +3<CR>
 
-" --------------------------------------------------------------------------------------------
-"  VIM Settings END
-" --------------------------------------------------------------------------------------------
+" 调整窗口大小 START
+nmap <Leader>v :vertical resize -3<CR>
+nmap <Leader>V :vertical resize +3<CR>
+nmap <Leader>h :resize -3<CR>
+nmap <Leader>H :resize +3<CR>
+" 调整窗口大小 END
 
-" --------------------------------------------------------------------------------------------
-"  ALE Settings START
-" --------------------------------------------------------------------------------------------
+" -------------------------------- vim-easy-align插件配置开始 --------------------------------
+"
+" 在visual模式下使用
+xmap ga <Plug>(EasyAlign)
 
-let g:ale_linters = {
-	\ 'go': ['gopls'],
-	\ 'python': ['flake8'],
-    \}
-" 自定义ALE的error和warning图标
-let g:ale_sign_error = '✗✗'
-let g:ale_sign_warning = '⚡️'
-" 显示Linter名称,出错或警告等相关信息
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" 打开文件时不进行检查
-let g:ale_lint_on_enter = 0
-" show errors or warnings in airline.
-" let g:airline#extensions#ale#enabled = 1
-" let g:ale_completion_enabled = 1
-" [e上一个错误，]e下一个错误
-autocmd FileType go nmap [e <Plug>(ale_previous_wrap)
-autocmd FileType go nmap ]e <Plug>(ale_next_wrap)
+" 在normal模式下使用
+nmap ga <Plug>(EasyAlign)
+"
+" -------------------------------- vim-easy-align插件配置结束 --------------------------------
 
-" --------------------------------------------------------------------------------------------
-"  ALE Settings END
-" --------------------------------------------------------------------------------------------
 
-" --------------------------------------------------------------------------------------------
-" NERDTree Settings START
-" --------------------------------------------------------------------------------------------
-
-" open NERDTree automatically when neovim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" F2 -> NERDTreeToggle
-map <F2> :NERDTreeToggle<CR>
-" close neovim if the only window left open is a NERDTree
+" -------------------------------- nerdtree配置开始 --------------------------------
+"
+" 当Vim中只剩下nerdtree的时候关闭Vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" --------------------------------------------------------------------------------------------
-" NERDTree Settings END
-" --------------------------------------------------------------------------------------------
+" 将Ctrl-n设置为togglenerdtree的快捷键(Normal模式)
+nmap <silent> <C-n> :NERDTreeToggle<CR>
 
-" --------------------------------------------------------------------------------------------
-" Tagbar Settings START
-" --------------------------------------------------------------------------------------------
+" 即使不指定打开文件时也打开nerdtree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" 当指定打开一个文件夹的时候打开nerdtree
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" 当打开Vim未指定文件时也打开nerdtree
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"
+" -------------------------------- nerdtree配置结束 --------------------------------
 
-nmap <F8> :TagbarToggle<CR>
+" -------------------------------- deoplete插件配置开始 --------------------------------
+"
+" 启动nvim时启用deoplete
+let g:deoplete#enable_at_startup = 1
 
-" --------------------------------------------------------------------------------------------
-" Tagbar Settings END
-" --------------------------------------------------------------------------------------------
+" 设置gocode的路径
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
-" --------------------------------------------------------------------------------------------
-"  NERD Commenter Settings START
-" --------------------------------------------------------------------------------------------
+" By default, the completion word list is in the sort order of gocode. Same as omnifunc.
+" Display all words while sorting.
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
+" 启用指针匹配
+let g:deoplete#sources#go#pointer = 1
 
-" --------------------------------------------------------------------------------------------
-"  NERD Commenter Settings END
-" --------------------------------------------------------------------------------------------
+" When enabled, deoplete-go can complete builtin objects.
+let g:deoplete#sources#go#builtin_objects = 1
 
-" --------------------------------------------------------------------------------------------
-"  fzf.vim Settings START
-" --------------------------------------------------------------------------------------------
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-nnoremap <silent> <Leader><Leader> :Files<CR>
-
-" --------------------------------------------------------------------------------------------
-"  fzf.vim Settings END
-" --------------------------------------------------------------------------------------------
-
-" --------------------------------------------------------------------------------------------
-"  vim-go Settings START
-" --------------------------------------------------------------------------------------------
-
-" Use this option to define which tool is used to gofmt. By default `gofmt` is used.
-let g:go_fmt_command = "goimports"
-
-set autowrite
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>i  <Plug>(go-info)
-autocmd FileType go nmap <leader>d  <Plug>(go-def)
-autocmd FileType go nmap <leader>p  <Plug>(go-def-pop)
-autocmd FileType go nmap <leader>f  <Plug>(go-referrers)
-
-" go语言使用驼峰命名法
-let g:go_addtags_transform = "camelcase"
-" 高亮函数名
-let g:go_highlight_functions = 1
-
-" --------------------------------------------------------------------------------------------
-"  vim-go Settings END
-" --------------------------------------------------------------------------------------------
-
-" --------------------------------------------------------------------------------------------
-"  UltiSnips Settings START
-" --------------------------------------------------------------------------------------------
-
-let g:python_host_prog  = '/Users/ronaldzhao/.pyenv/shims/python'    " 且需要 pip2 install --user --upgrade neovim
-let g:python3_host_prog  = '/Users/ronaldzhao/.pyenv/shims/python3'  " 且需要 pip3 install --user --upgrade neovim
-" let UltiSnips uses python3
-let g:UltiSnipsUsePythonVersion = 3
-
-" 使用<Ctrl-l>列出可用的代码片段
-let g:UltiSnipsListSnippets="<c-l>"
-" 设置UltiSnips自定义配置文件的路径
-let g:UltiSnipsSnippetsDir=$HOME."/.config/UltiSnips"
-" 设置UltiSnips的配置文件搜索路径
-let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME."/.config/UltiSnips"]
-" 使用 UltiSnipsEditSplit 的时候以垂直分屏的方式编辑当前文件格式的代码片段配置文件
-let g:UltiSnipsEditSplit="vertical"
-" Disable looking for SnipMate snippets in runtimepath.
-let g:UltiSnipsEnableSnipMate=0
-
-" --------------------------------------------------------------------------------------------
-"  UltiSnips Settings END
-" --------------------------------------------------------------------------------------------
+" When enabled, deoplete-go can complete standard library packages that are not explicitely imported yet.
+let g:deoplete#sources#go#unimported_packages = 1
+"
+" -------------------------------- deoplete插件配置开始 --------------------------------
