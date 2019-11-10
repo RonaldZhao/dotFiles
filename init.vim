@@ -19,6 +19,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " 一个搜索插件，需要先brew install fzf
+" 如果使用Rg命令还需要提前安装ripgrep(brew install ripgrep)
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -36,13 +37,42 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " 异步Go语言代码补全插件，需要deoplete.nvim插件和gocode工具
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
+" 状态栏插件
+Plug 'vim-airline/vim-airline'
+
+" vim-airline主题插件
+Plug 'vim-airline/vim-airline-themes'
+
+" 代码大纲插件
+Plug 'majutsushi/tagbar'
+
+" git集成插件
+Plug 'tpope/vim-fugitive'
+
+" git状态提示插件
+Plug 'airblade/vim-gitgutter'
+
+" dracula主题
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+" onedark主题
+Plug 'joshdick/onedark.vim'
+
 call plug#end()
 
+" -------------------------------- vim配置开始 --------------------------------
+"
 " 默认的<Leader>键为"\",这里设置为";"
 let mapleader = ";"
 
 " 开启语法高亮
 syntax on
+
+" 将主题设置为dracula
+" colorscheme dracula
+
+" 将主题设置为onedark
+colorscheme onedark
 
 " 显示行号
 set number
@@ -96,6 +126,11 @@ nmap <Leader>h :resize -3<CR>
 nmap <Leader>H :resize +3<CR>
 " 调整窗口大小 END
 
+" 配置FZF快捷键，需要fzf和fzf.vim
+nmap <silent> ff :FZF<CR>
+"
+" -------------------------------- vim配置结束 --------------------------------
+
 " -------------------------------- vim-easy-align插件配置开始 --------------------------------
 "
 " 在visual模式下使用
@@ -146,4 +181,4 @@ let g:deoplete#sources#go#builtin_objects = 1
 " When enabled, deoplete-go can complete standard library packages that are not explicitely imported yet.
 let g:deoplete#sources#go#unimported_packages = 1
 "
-" -------------------------------- deoplete插件配置开始 --------------------------------
+" -------------------------------- deoplete插件配置结束 --------------------------------
