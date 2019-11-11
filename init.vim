@@ -107,8 +107,8 @@ set softtabstop=4
 " 搜索时忽略大小写
 set ignorecase
 
-" cancel line break
-set nowrap
+" 自动折行，但不加入换行符
+set wrap
 
 " 当光标所在行到底部还剩20行时开始滚动
 set so=20
@@ -182,3 +182,28 @@ let g:deoplete#sources#go#builtin_objects = 1
 let g:deoplete#sources#go#unimported_packages = 1
 "
 " -------------------------------- deoplete插件配置结束 --------------------------------
+"
+" -------------------------------- vim-go插件配置开始 --------------------------------
+"
+" 将转到定义应设为<Leader>gd(Normal模式)
+nmap <silent> <Leader>gd :GoDef<CR>
+
+" 转到定义Pop
+nmap <silent> <Leader>gdp :GoDefPop<CR>
+
+" 格式化代码
+nmap <silent> <Leader>gf :GoFmt<CR>
+"
+" -------------------------------- vim-go插件配置结束 --------------------------------
+"
+" -------------------------------- tagbar插件配置开始 --------------------------------
+"
+nmap <silent> <Leader>tg :TagbarToggle<CR>
+"
+" -------------------------------- tagbar插件配置结束 --------------------------------
+"
+" -------------------------------- git插件配置开始 --------------------------------
+"
+nmap <silent> <Leader>gb :Gblame<CR>
+"
+" -------------------------------- git插件配置结束 --------------------------------
