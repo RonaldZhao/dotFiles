@@ -27,6 +27,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 " nerdtree中显示git状态的插件
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" 智能注释插件，需要在配置文件中添加'filetype plugin on'
+Plug 'scrooloose/nerdcommenter'
 
 " 文件图标插件
 Plug 'ryanoasis/vim-devicons'
@@ -67,6 +69,9 @@ let mapleader = ";"
 
 " 开启语法高亮
 syntax on
+
+" nerdcommenter插件需要
+filetype plugin on
 
 " 将主题设置为dracula
 " colorscheme dracula
@@ -207,3 +212,18 @@ nmap <silent> <Leader>tg :TagbarToggle<CR>
 nmap <silent> <Leader>gb :Gblame<CR>
 "
 " -------------------------------- git插件配置结束 --------------------------------
+"
+" -------------------------------- nerdcommenter插件配置开始 --------------------------------
+"
+" 自动在注释符后边加一个空格
+let g:NERDSpaceDelims = 1
+" 取消注释的时候自动去掉末尾的空格
+let g:NERDTrimTrailingWhitespace = 1
+" 让插件自动判断所有行是否注释了
+let g:NERDToggleCheckAllLines = 1
+" 使用块注释的时候统一左对齐注释符
+let g:NERDDefaultAlign = 'left'
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+"
+" -------------------------------- nerdcommenter插件配置结束 --------------------------------
