@@ -1,18 +1,47 @@
 {
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
-    }
-  },
-  "python.linting.pylintEnabled": false,
-  "python.jediEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Path": "/Users/ronaldzhao/Library/Python/3.7/bin/flake8",
-  "python.formatting.provider": "black",
-  "python.formatting.blackPath": "/Users/ronaldzhao/Library/Python/3.7/bin/black",
-  "diagnostic.errorSign": "✗✗",
-  "diagnostic.warningSign": "⚡️"
+    // 文件路径:~/.config/nvim/coc-settings.json
+    // 需要安装的插件：
+    // :CocInstall coc-json
+    // :CocInstall coc-python
+    // :CocInstall coc-pairs
+    "languageserver": {
+        "golang": {
+            "command": "go-langserver", // go get -u github.com/sourcegraph/go-langserver
+            "filetypes": [
+                "go"
+            ],
+            "initializationOptions": {
+                "gocodeCompletionEnabled": true,
+                "diagnosticsEnabled": true,
+                "lintTool": "golint"
+            }
+        },
+        "clangd": {
+            "command": "clangd", // brew install llvm & export PATH="/usr/local/opt/llvm/bin:$PATH"
+            "args": [
+                "--background-index"
+            ],
+            "rootPatterns": [
+                "compile_flags.txt",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ]
+        }
+    },
+    "python.pythonPath": "/usr/local/bin/python3",
+    "python.linting.pylintEnabled": false,
+    "python.jediEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "/usr/local/bin/flake8",
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/Users/ronaldzhao/Library/Python/3.7/bin/black",
+    "python.sortImports.path": "/Users/ronaldzhao/Library/Python/3.7/bin/isort"
 }
