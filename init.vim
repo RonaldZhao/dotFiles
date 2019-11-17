@@ -37,6 +37,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " onedark主题
 Plug 'joshdick/onedark.vim'
+" gruvbox主题
+Plug 'morhetz/gruvbox'
 " 实现了大部分Langserver的自动补全插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
@@ -49,9 +51,11 @@ syntax on
 " nerdcommenter插件需要
 filetype plugin on
 " 将主题设置为dracula
-colorscheme dracula
+" colorscheme dracula
 " 将主题设置为onedark
 " colorscheme onedark
+" 将主题设置为gruvbox
+colorscheme gruvbox
 " 显示行号
 set number
 " 设置编码格式为utf-8
@@ -272,6 +276,8 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" enable highlight current symbol on CursorHold
+" enable highlight current symbol on CursorHold ---- coc-highlight
 autocmd CursorHold * silent call CocActionAsync('highlight')
+" coc-prerrier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " -------------------------------- coc.nvim插件配置结束 --------------------------------
