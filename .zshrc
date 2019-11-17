@@ -103,11 +103,15 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias rly="~/.ssh/login_inner"
+alias rly="~/.ssh/relay"
 alias c="clear"
 alias startredis="redis-server /usr/local/redis-5.0.5/etc/redis.conf"
 alias nv="nvim"
 alias dateto='date -j -f "%Y-%m-%d %H:%M:%S"' # date -j -f "%Y-%m-%d %H:%M:%S" "2019-08-01 19:00:00" +%s 生成指定时间的时间戳
+# 下面的需要安装lsd: brew install lsd
+alias ls="lsd"
+alias ll="lsd -l"
+alias la="lsd -al"
 
 # pyenv 安装python的方法
 # SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk MACOSX_DEPLOYMENT_TARGET=10.14 pyenv install x.x.x
@@ -117,8 +121,16 @@ export GOBIN="$GOPATH/bin"
 
 export PATH="$GOBIN:$PATH:/usr/local/mysql/bin:/Users/ronaldzhao/Library/Python/2.7/bin:/Users/ronaldzhao/Library/Python/3.7/bin"
 
+# brew install llvm(for clangd)
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 # autojump settings start
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 # autojump settings end
 
-neofetch
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# 下面一行需要: brew tap sambadevi/powerlevel9k & brew install powerlevel9k
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+
+# neofetch
